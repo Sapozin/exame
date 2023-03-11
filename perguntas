@@ -1,0 +1,104 @@
+/**
+ * 2) Dado a sequência de Fibonacci, onde se inicia por 0 e 1 e o próximo valor sempre será a soma dos 2 valores anteriores
+ *  (exemplo: 0, 1, 1, 2, 3, 5, 8, 13, 21, 34...) 
+ * escreva um programa na linguagem que desejar onde, informado um número, ele calcule a sequência de Fibonacci e 
+ * retorne uma mensagemavisando se o número informado pertence ou não a sequência.
+ * 
+IMPORTANTE:
+Esse número pode ser informado através de qualquer entrada de sua preferência ou pode ser previamente definido no código;
+ */
+
+function verificarFibonacci(num) {
+    let a = 0;
+    let b = 1;
+  
+    while (b <= num) {
+      if (num === b) {
+        console.log(`${num} pertence à sequência de Fibonacci.`);
+        return;
+      }
+  
+      let c = a + b;
+      a = b;
+      b = c;
+    }
+  
+    console.log(`${num} não pertence à sequência de Fibonacci.`);
+  }
+
+  verificarFibonacci(7);
+  verificarFibonacci(21);
+  verificarFibonacci(34);
+
+  /**
+   * Dado um vetor que guarda o valor de faturamento diário de uma distribuidora, faça um programa, na linguagem que desejar, que calcule e retorne:
+   * O menor valor de faturamento ocorrido em um dia do mês;
+   * O maior valor de faturamento ocorrido em um dia do mês;
+   * Número de dias no mês em que o valor de faturamento diário foi superior à média mensal.
+   */
+  const vendas = [	
+    { "dia": 1, "valor": 22174.1664 },	
+    { "dia": 2, "valor": 24537.6698 },	
+    { "dia": 3, "valor": 26139.6134 },	
+    { "dia": 4, "valor": 0.0 },	
+    { "dia": 5, "valor": 0.0 },	
+    { "dia": 6, "valor": 26742.6612 },	
+    { "dia": 7, "valor": 0.0 },	
+    { "dia": 8, "valor": 42889.2258 },	
+    { "dia": 9, "valor": 46251.174 },	
+    { "dia": 10, "valor": 11191.4722 },	
+    { "dia": 11, "valor": 0.0 },	
+    { "dia": 12, "valor": 0.0 },	
+    { "dia": 13, "valor": 3847.4823 },	
+    { "dia": 14, "valor": 373.7838 },	
+    { "dia": 15, "valor": 2659.7563 },	
+    { "dia": 16, "valor": 48924.2448 },	
+    { "dia": 17, "valor": 18419.2614 },	
+    { "dia": 18, "valor": 0.0 },	
+    { "dia": 19, "valor": 0.0 },	
+    { "dia": 20, "valor": 35240.1826 },	
+    { "dia": 21, "valor": 43829.1667 },	
+    { "dia": 22, "valor": 18235.6852 },	
+    { "dia": 23, "valor": 4355.0662 },	
+    { "dia": 24, "valor": 13327.1025 },	
+    { "dia": 25, "valor": 0.0 },	
+    { "dia": 26, "valor": 0.0 },	
+    { "dia": 27, "valor": 25681.8318 },	
+    { "dia": 28, "valor": 1718.1221 },	
+    { "dia": 29, "valor": 13220.495 },	
+    { "dia": 30, "valor": 8414.61 }
+];
+//Encontrar o menor valor
+let menorValor = vendas[0].valor; // Inicializa a variável com o primeiro valor do vetor
+
+for (let i = 1; i < vendas.length; i++) {
+  if (vendas[i].valor < menorValor) {
+    menorValor = vendas[i].valor;
+  }
+}
+
+console.log(`O menor valor de faturamento foi ${menorValor}.`);
+//Encontrar o maior valor
+let maiorValor = 0;
+
+for (let i = 0; i < vendas.length; i++) {
+    if (vendas[i].valor > maiorValor) {
+        maiorValor = vendas[i].valor;
+    }
+}
+
+console.log(`Maior valor de faturamento: R$ ${maiorValor.toFixed(2)}`);
+
+// Calcula a média mensal
+const somaVendas = vendas.reduce((total, venda) => total + venda.valor, 0);
+const mediaMensal = somaVendas / vendas.length;
+
+// Encontra o número de dias em que o valor diário foi superior à média mensal
+let diasAcimaMedia = 0;
+for (let i = 0; i < vendas.length; i++) {
+  if (vendas[i].valor > mediaMensal) {
+    diasAcimaMedia++;
+  }
+}
+
+console.log(`O número de dias no mês em que o valor de faturamento diário foi superior à média mensal foi ${diasAcimaMedia}.`);
