@@ -102,3 +102,48 @@ for (let i = 0; i < vendas.length; i++) {
 }
 
 console.log(`O número de dias no mês em que o valor de faturamento diário foi superior à média mensal foi ${diasAcimaMedia}.`);
+
+/**
+ * 4) Dado o valor de faturamento mensal de uma distribuidora, detalhado por estado:
+
+    SP – R$67.836,43
+    RJ – R$36.678,66
+    MG – R$29.229,88
+    ES – R$27.165,48
+    Outros – R$19.849,53
+
+Escreva um programa na linguagem que desejar onde calcule o percentual de representação que cada estado teve dentro do valor total mensal da distribuidora.
+ */
+const faturamentoPorEstado = {
+    SP: 67836.43,
+    RJ: 36678.66,
+    MG: 29229.88,
+    ES: 27165.48,
+    Outros: 19849.53,
+  };
+  
+  const totalFaturamento = Object.values(faturamentoPorEstado).reduce((acc, cur) => acc + cur);
+  
+  for (let estado in faturamentoPorEstado) {
+    const percentual = ((faturamentoPorEstado[estado] / totalFaturamento) * 100).toFixed(2);
+    console.log(`${estado} representou ${percentual}% do faturamento total.`);
+  }
+  
+  /**
+   * 5) Escreva um programa que inverta os caracteres de um string.
+
+    IMPORTANTE:
+    a) Essa string pode ser informada através de qualquer entrada de sua preferência ou pode ser previamente definida no código;
+    b) Evite usar funções prontas, como, por exemplo, reverse;
+
+   */
+    let str = "TargetSistemas";
+    let strInvertida = "";
+    
+    // Percorre a string de trás para frente e adiciona cada caractere na variável strInvertida
+    for (let i = str.length - 1; i >= 0; i--) {
+      strInvertida += str[i];
+    }
+    
+    console.log(strInvertida); 
+    
